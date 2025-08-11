@@ -27,3 +27,30 @@ topMenuEl.style.backgroundColor = "var(--top-menu-bg)";
 
 // 4. Add the flex-around class
 topMenuEl.classList.add("flex-around");
+
+
+// ===== Part 3 =====
+
+// Menu data structure
+var menuLinks = [
+  { text: 'about', href: '/about' },
+  { text: 'catalog', href: '/catalog' },
+  { text: 'orders', href: '/orders' },
+  { text: 'account', href: '/account' },
+];
+
+// Iterate over menuLinks array
+menuLinks.forEach(function(link) {
+  // Create a new <a> element
+  const aEl = document.createElement('a');
+
+  // Set the href attribute
+  aEl.setAttribute('href', link.href);
+
+  // Set the text content
+  aEl.textContent = link.text.toUpperCase(); // capitalized like in your screenshot
+
+  // Append to the top menu
+  topMenuEl.appendChild(aEl);
+});
+
