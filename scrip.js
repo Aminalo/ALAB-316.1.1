@@ -32,7 +32,7 @@ topMenuEl.classList.add("flex-around");
 // ===== Part 3 =====
 
 // Menu data structure
-var menuLinks = [
+const menuLinks = [
   { text: 'about', href: '/about' },
   { text: 'catalog', href: '/catalog' },
   { text: 'orders', href: '/orders' },
@@ -53,4 +53,20 @@ menuLinks.forEach(function(link) {
   // Append to the top menu
   topMenuEl.appendChild(aEl);
 });
+
+//Creating the Submenu
+// grab the sub-menu
+const subMenuEl = document.getElementById("sub-menu");
+
+// set size and color
+subMenuEl.style.height = "3rem";
+subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
+
+// add flex layout
+subMenuEl.classList.add("flex-around");
+
+
+
+
+
 
