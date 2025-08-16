@@ -58,4 +58,57 @@ function buildSubMenu(subLinks) {
   });
 }
 
+// ===== Menu click interaction =====
+const topMenuLinks = topMenuEl.querySelectorAll("a");
+let showingSubMenu = false;
+
+topMenuEl.addEventListener("click", function(event) {
+  event.preventDefault();
+  if (!event.target.matches("a")) return;
+
+  console.log(event.target.textContent);
+
+  // Remove active class from all
+  topMenuLinks.forEach(link => link.classList.remove("active"));
+
+  // Toggle submenu
+  const clickedLinkObj = menuLinks.find(link => link.text.toUpperCase() === event.target.textContent);
+  if (event.target.classList.contains("active")) {
+    event.target.classList.remove("active");
+    showingSubMenu = false;
+    subMenuEl.style.top = "0";
+    return;
+  }
+
+  event.target.classList.add("active");
+
+  if (clickedLinkObj.subLinks) {
+    showingSubMenu = true;
+    buildSubMenu(clickedLinkObj.subLinks);
+    subMenuEl.style.top = "100%";
+  } else {
+    showingSubMenu = false;
+    subMenuEl.style.top = "0";
+  }
+});
+
+
+
+// ===== Submenu click interaction =====
+subMenuEl.addEventListener("click", function(event) {
+  event.preventDefault();
+  if (!event.target.matches("a")) return;
+
+  console.log(event.target.textContent);
+
+  showingSubMenu = false;
+  subMenuEl.style.top = "0";
+
+  // Remove active from top menu
+  topMenuLinks.forEach(link => link.classList.remove("active"));
+
+  // Update main section
+  mainEl.innerHTML = `<h1>${event.target.textContent}</h1>`;
+});
+
 
