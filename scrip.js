@@ -46,3 +46,16 @@ subMenuEl.classList.add("flex-around");
 subMenuEl.style.position = "absolute";
 subMenuEl.style.top = "0";
 
+
+// Helper function to build submenu
+function buildSubMenu(subLinks) {
+  subMenuEl.innerHTML = ''; // Clear submenu
+  subLinks.forEach(function(link) {
+    const aEl = document.createElement('a');
+    aEl.setAttribute('href', link.href);
+    aEl.textContent = link.text.toUpperCase();
+    subMenuEl.appendChild(aEl);
+  });
+}
+
+
